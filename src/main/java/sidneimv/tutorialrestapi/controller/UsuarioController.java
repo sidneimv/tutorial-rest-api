@@ -17,7 +17,8 @@ public class UsuarioController {
 
     @GetMapping(path = "api/usuario/listar")
     public List<UsuarioModel> listar() {
-        return (List<UsuarioModel>) repository.findAll();
+        return (List<UsuarioModel>)
+            repository.findAll();
     }
 
     @GetMapping(path = "/api/usuario/{codigo}")
@@ -35,7 +36,7 @@ public class UsuarioController {
 //  @PutMapping(value="/alterar/{codigo}")
     @PutMapping(path = "/api/usuario/alterar/{codigo}")
     public ResponseEntity <?> alterar(@PathVariable("codigo") Integer codigo,
-                                  @RequestBody UsuarioModel usuario) {
+                                      @RequestBody UsuarioModel usuario) {
         return repository.findById(codigo)
             .map(record -> {
                 record.setNome(usuario.getNome());
